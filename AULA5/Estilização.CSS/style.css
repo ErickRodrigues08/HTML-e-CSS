@@ -1,0 +1,49 @@
+body{
+background-color: rgb(197, 197, 197);
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+}
+.Introdução{
+    background-color: rgb(255, 255, 172);
+    padding: 20px;
+    margin: 30px;
+    border: solid;
+    border-color: black;
+    text-align: start;
+    border-radius: 10px
+  
+}
+
+.Estudos{
+    background-color: rgb(109, 109, 249);
+    padding: 20px;
+    margin: 30px;
+    border: solid;
+    border-color: rgb(242, 255, 0);
+    border-radius: 10px;
+    color: yellow;
+    text-align: start;
+}
+
+.Meus_sonhos{
+    background-color: rgb(169, 197, 222);
+    padding: 20px;
+    margin: 30px;
+    border: solid;
+    text-align: start;
+    border-radius: 10px;
+    color: rgb(0, 0, 114);
+    text-align: start;
+
+}
+
+.contato{
+    background-color: white;
+    padding: 20px;
+    margin: 30px;
+    border: solid;
+    border-color: brown;
+    border-radius: 10px;
+    color: brown;
+    text-align: start;
+}

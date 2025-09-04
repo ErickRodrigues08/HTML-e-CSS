@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipes de Fórmula 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --f1-red: #e10600;
+            --f1-dark: #15151e;
+            --f1-gray: #f4f4f4;
+            --f1-light: #ffffff;
+            --f1-blue: #006cff;
+            --f1-yellow: #ffd700;
+            --f1-green: #00d2be;
+            --mercedes: #00d2be;
+            --redbull: #0600ef;
+            --ferrari: #dc0000;
+            --mclaren: #ff8700;
+            --alpine: #0090ff;
+            --aston-martin: #006f62;
+            --alfa-romeo: #900000;
+            --haas: #ffffff;
+            --alphatauri: #2b4562;
+            --williams: #005aff;
+        }
+        
+        body {
+            background-color: var(--f1-gray);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--f1-dark);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            background-color: var(--f1-red);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: var(--f1-red);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1596466596120-2a8e4b5d1a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Team Filters */
+        .team-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--f1-dark);
+            color: var(--f1-dark);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, 
+        .filter-btn.active {
+            background-color: var(--f1-dark);
+            color: white;
+        }
+        
+        /* Teams Grid */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-header {
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-logo img {
+            max-width: 60px;
+            max-height: 60px;
+        }
+        
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .team-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .team-detail {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .team-drivers {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .driver {
+            display: flex;
+            align-items: center;
+            background-color: var(--f1-gray);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .driver-number {
+            background-color: var(--f1-dark);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .team-stats {
+            background-color: var(--f1-gray);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .stats-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--f1-dark);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--f1-red);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        /* Championship Standings */
+        .standings {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+        }
+        
+        .standings-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--f1-dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--f1-gray);
+        }
+        
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .standings-table th, 
+        .standings-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--f1-gray);
+        }
+        
+        .standings-table th {
+            background-color: var(--f1-dark);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .standings-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .team-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--f1-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo span {
+            background-color: var(--f1-red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .footer-about {
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+        
+        .footer-heading {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--f1-red);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--f1-red);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-drivers {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>F1</span>
+                <div class="logo-text">Formula 1</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="pilotos.html"><i class="fas fa-user"></i> Pilotos</a></li>
+                    <li><a href="equipes.html" class="active"><i class="fas fa-users"></i> Equipes</a></li>
+                    <li><a href="circuitos.html"><i class="fas fa-route"></i> Circuitos</a></li>
+                    <li><a href="classificacao.html"><i class="fas fa-trophy"></i> Classificação</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Equipes de Fórmula 1</h1>
+            <p>Conheça as poderosas equipes e suas máquinas incríveis que disputam o campeonato mundial</p>
+        </div>
+        
+        <div class="team-filters">
+            <button class="filter-btn active">Todas</button>
+            <button class="filter-btn">Top 3</button>
+            <button class="filter-btn">Fabricantes</button>
+            <button class="filter-btn">Equipes Clientes</button>
+        </div>
+        
+        <div class="teams-grid">
+            <!-- Red Bull Racing -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--redbull);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/redbull.com" alt="Red Bull Racing">
+                    </div>
+                    <h2 class="team-name">Red Bull Racing</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">Áustria</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Christian Horner</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Honda RBPT</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">2005</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">1</span>
+                            <span>Verstappen</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">11</span>
+                            <span>Pérez</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">1º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">720</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mercedes -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--mercedes);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/mercedesamgf1.com" alt="Mercedes">
+                    </div>
+                    <h2 class="team-name">Mercedes</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">Alemanha</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Toto Wolff</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Mercedes</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">2010</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">44</span>
+                            <span>Hamilton</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">63</span>
+                            <span>Russell</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">2º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">532</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ferrari -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--ferrari);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/ferrari.com" alt="Ferrari">
+                    </div>
+                    <h2 class="team-name">Ferrari</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">Itália</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Frédéric Vasseur</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Ferrari</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">1950</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">16</span>
+                            <span>Leclerc</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">55</span>
+                            <span>Sainz</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">3º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">432</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">7</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- McLaren -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--mclaren);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/mclaren.com" alt="McLaren">
+                    </div>
+                    <h2 class="team-name">McLaren</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">Reino Unido</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Andrea Stella</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Mercedes</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">1963</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">4</span>
+                            <span>Norris</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">81</span>
+                            <span>Piastri</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">4º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">282</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aston Martin -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--aston-martin);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/astonmartin.com" alt="Aston Martin">
+                    </div>
+                    <h2 class="team-name">Aston Martin</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">Reino Unido</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Mike Krack</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Mercedes</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">2021</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">14</span>
+                            <span>Alonso</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">18</span>
+                            <span>Stroll</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">5º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">236</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alpine -->
+            <div class="team-card">
+                <div class="team-header" style="background-color: var(--alpine);">
+                    <div class="team-logo">
+                        <img src="https://logo.clearbit.com/alpinecars.com" alt="Alpine">
+                    </div>
+                    <h2 class="team-name">Alpine</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-details">
+                        <div class="team-detail">
+                            <span class="detail-label">País</span>
+                            <span class="detail-value">França</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Chefe</span>
+                            <span class="detail-value">Bruno Famin</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Motor</span>
+                            <span class="detail-value">Renault</span>
+                        </div>
+                        <div class="team-detail">
+                            <span class="detail-label">Fundação</span>
+                            <span class="detail-value">2021</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-drivers">
+                        <div class="driver">
+                            <span class="driver-number">10</span>
+                            <span>Gasly</span>
+                        </div>
+                        <div class="driver">
+                            <span class="driver-number">31</span>
+                            <span>Ocon</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-stats">
+                        <div class="stats-title">Estatísticas 2023</div>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-value">6º</div>
+                                <div class="stat-label">Posição</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Vitórias</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">100</div>
+                                <div class="stat-label">Pontos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="standings">
+            <h2 class="standings-title">Classificação de Equipes 2023</h2>
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Equipe</th>
+                        <th>Pontos</th>
+                        <th>Vitórias</th>
+                        <th>Pódios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="team-color" style="background-color: var(--redbull);"></span> Red Bull Racing</td>
+                        <td>720</td>
+                        <td>15</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="team-color" style="background-color: var(--mercedes);"></span> Mercedes</td>
+                        <td>532</td>
+                        <td>1</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="team-color" style="background-color: var(--ferrari);"></span> Ferrari</td>
+                        <td>432</td>
+                        <td>2</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="team-color" style="background-color: var(--mclaren);"></span> McLaren</td>
+                        <td>282</td>
+                        <td>0</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="team-color" style="background-color: var(--aston-martin);"></span> Aston Martin</td>
+                        <td>236</td>
+                        <td>0</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="team-color" style="background-color: var(--alpine);"></span> Alpine</td>
+                        <td>100</td>
+                        <td>0</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span>F1</span> Formula 1
+                    </div>
+                    <p class="footer-about">O seu portal brasileiro com tudo sobre Fórmula 1. Notícias atualizadas, calendário, resultados e muito mais.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-heading">Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="pilotos.html">Pilotos</a></li>
+                        <li><a href="equipes.html">Equipes</a></li>
+                        <li><a href="circuitos.html">Circuitos</a></li>
+                        <li><a href="classificacao.html">Classificação</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-heading">Campeonato</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Calendário 2023</a></li>
+                        <li><a href="#">Resultados</a></li>
+                        <li><a href="#">Regulamento</a></li>
+                        <li><a href="#">História</a></li>
+                        <li><a href="#">Hall da Fama</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Fórmula 1 News - Site não oficial para fins educacionais
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtros de equipes
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove a classe active de todos os botões
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Adiciona a classe active ao botão clicado
+                button.classList.add('active');
+                
+                // Aqui você implementaria a lógica de filtragem real
+                // Por exemplo: filterTeams(button.textContent);
+            });
+        });
+        
+        // Animação de entrada dos cards
+        const teamCards = document.querySelectorAll('.team-card');
+        
+        teamCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 + (index * 100));
+        });
+    </script>
+</body>
+</html>

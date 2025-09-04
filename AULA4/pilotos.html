@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 News - Página Inicial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <a href="http://127.0.0.1:5500/aula4.html/index.html#"></a>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --f1-red: #e10600;
+            --f1-dark: #15151e;
+            --f1-gray: #f4f4f4;
+            --f1-light: #ffffff;
+            --f1-blue: #006cff;
+        }
+        
+        body {
+            background-color: var(--f1-gray);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--f1-dark);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            background-color: var(--f1-red);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: var(--f1-red);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--f1-red);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .hero-btn:hover {
+            background-color: #ff2c24;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(225, 6, 0, 0.4);
+        }
+        
+        /* News Section */
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--f1-red);
+            display: inline-block;
+            color: var(--f1-dark);
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+        
+        .news-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--f1-red);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-date {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 5px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--f1-dark);
+            flex-grow: 1;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .news-link {
+            color: var(--f1-red);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .news-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .news-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Next Race Section */
+        .next-race {
+            background-color: var(--f1-dark);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .race-info {
+            flex: 1;
+        }
+        
+        .race-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--f1-red);
+        }
+        
+        .race-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .race-detail i {
+            margin-right: 10px;
+            color: var(--f1-red);
+            width: 20px;
+        }
+        
+        .countdown {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 250px;
+        }
+        
+        .countdown-title {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .countdown-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--f1-red);
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        /* Featured Section */
+        .featured-news {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .main-featured {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1594741158701-e5ab913e178b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            border-radius: 10px;
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 400px;
+        }
+        
+        .featured-tag {
+            background-color: var(--f1-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            align-self: flex-start;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .main-featured h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .main-featured p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .side-featured {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .side-news {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            gap: 15px;
+        }
+        
+        .side-news img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .side-content h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--f1-dark);
+        }
+        
+        .side-content p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--f1-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo span {
+            background-color: var(--f1-red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .footer-about {
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+        
+        .footer-heading {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--f1-red);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--f1-red);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .featured-news {
+                grid-template-columns: 1fr;
+            }
+            
+            .next-race {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .race-info {
+                margin-bottom: 30px;
+            }
+            
+            .race-detail {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>F1</span>
+                <div class="logo-text">Formula 1 News</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href=""><i class="fas fa-user"></i> Pilotos</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Equipes</a></li>
+                    <li><a href="#"><i class="fas fa-route"></i> Circuitos</a></li>
+                    <li><a href="#"><i class="fas fa-trophy"></i> Classificação</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Fórmula 1 2023</h1>
+            <p>Tudo sobre a maior categoria do automobilismo mundial</p>
+            <a href="#" class="hero-btn">Ver Classificação</a>
+        </div>
+        
+        <h2 class="section-title">Últimas Notícias</h2>
+        
+        <div class="news-container">
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1633617477271-d4df75248f56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Verstappen">
+                    <div class="news-tag">Pilotos</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 15 de Outubro, 2023</div>
+                    <h3 class="news-title">Verstappen domina o GP do Qatar e se aproxima do tricampeonato</h3>
+                    <p class="news-excerpt">Max Verstappen vence com autoridade no circuito de Losail e amplia sua liderança no campeonato.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1596726895343-5b2f2b1bca2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ferrari">
+                    <div class="news-tag">Equipes</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 14 de Outubro, 2023</div>
+                    <h3 class="news-title">Ferrari anuncia nova atualização para o motor na próxima corrida</h3>
+                    <p class="news-excerpt">A Scuderia Ferrari trará uma significativa atualização no propulsor para as últimas etapas da temporada.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1626814026169-f6bcf7ad25c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Hamilton">
+                    <div class="news-tag">Pilotos</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 13 de Outubro, 2023</div>
+                    <h3 class="news-title">Hamilton assina extensão de contrato com a Mercedes até 2025</h3>
+                    <p class="news-excerpt">Lewis Hamilton seguirá na equipe Mercedes por mais duas temporadas, até o final de 2025.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="next-race">
+            <div class="race-info">
+                <h3 class="race-title">Próxima Corrida: GP dos Estados Unidos</h3>
+                <div class="race-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Circuit of the Americas, Austin</span>
+                </div>
+                <div class="race-detail">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>22 de Outubro, 2023</span>
+                </div>
+                <div class="race-detail">
+                    <i class="far fa-clock"></i>
+                    <span>15:00h (Horário de Brasília)</span>
+                </div>
+            </div>
+            <div class="countdown">
+                <div class="countdown-title">Faltam:</div>
+                <div class="countdown-timer">
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="days">06</div>
+                        <div class="countdown-label">dias</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="hours">14</div>
+                        <div class="countdown-label">horas</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="minutes">28</div>
+                        <div class="countdown-label">min</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="seconds">43</div>
+                        <div class="countdown-label">seg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="featured-news">
+            <div class="main-featured">
+                <span class="featured-tag">Destaque</span>
+                <h2>Nova temporada de F1 2024 terá recorde de 24 corridas no calendário</h2>
+                <p>Confirmação foi feita pela FIA nesta semana. China retorna ao calendário após hiato, e emirados árabes terão etapa adicional.</p>
+                <a href="#" class="news-link" style="color: white">Ler mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="side-featured">
+                <div class="side-news">
+                    <img src="https://images.unsplash.com/photo-1624282941830-49ae446d2a5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Silverstone">
+                    <div class="side-content">
+                        <h3>Silverstone renova contrato e seguirá no calendário até 2030</h3>
+                        <p>Clássico circuito britânico garantiu sua permanência na F1 por mais sete temporadas.</p>
+                    </div>
+                </div>
+                <div class="side-news">
+                    <img src="https://images.unsplash.com/photo-1626814026160-8f2c23b274d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="McLaren">
+                    <div class="side-content">
+                        <h3>McLaren anuncia nova patrocinadora principal para 2024</h3>
+                        <p>Equipe britânica fechou acordo com empresa de tecnologia por £30 milhões/ano.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Notícias das Equipes</h2>
+        
+        <div class="news-container">
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d1a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Red Bull">
+                    <div class="news-tag">Red Bull</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 12 de Outubro, 2023</div>
+                    <h3 class="news-title">Red Bull Racing revela novo sistema de recuperação de energia</h3>
+                    <p class="news-excerpt">Equipe líder do campeonato desenvolve tecnologia inovadora para o sistema híbrido de potência.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1642607654337-01c9e682d3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Aston Martin">
+                    <div class="news-tag">Aston Martin</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 11 de Outubro, 2023</div>
+                    <h3 class="news-title">Aston Martin anuncia nova fábrica para 2024</h3>
+                    <p class="news-excerpt">Equipe investirá £200 milhões em novo centro de tecnologia visando disputar títulos em 2025.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1627229926624-bc0384634260?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="AlphaTauri">
+                    <div class="news-tag">AlphaTauri</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-clock"></i> 10 de Outubro, 2023</div>
+                    <h3 class="news-title">AlphaTauri confirmará nova denominação para 2024</h3>
+                    <p class="news-excerpt">Equipe satélite da Red Bull passará por rebranding completo na próxima temporada.</p>
+                    <a href="#" class="news-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span>F1</span> Formula 1 News
+                    </div>
+                    <p class="footer-about">O seu portal brasileiro com tudo sobre Fórmula 1. Notícias atualizadas, calendário, resultados e muito mais.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-heading">Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Página Inicial</a></li>
+                        <li><a href="#">Pilotos</a></li>
+                        <li><a href="#">Equipes</a></li>
+                        <li><a href="#">Circuitos</a></li>
+                        <li><a href="#">Classificação</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-heading">Campeonato</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Calendário 2023</a></li>
+                        <li><a href="#">Resultados</a></li>
+                        <li><a href="#">Regulamento</a></li>
+                        <li><a href="#">História</a></li>
+                        <li><a href="#">Hall da Fama</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Fórmula 1 News - Site não oficial para fins educacionais
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown para a próxima corrida
+        function updateCountdown() {
+            const raceDate = new Date('2023-10-22T15:00:00-03:00');
+            const now = new Date();
+            const diff = raceDate - now;
+            
+            if (diff <= 0) {
+                document.querySelector('.countdown-title').textContent = 'Corrida em andamento!';
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Efeito de digitação no título
+        const titleElement = document.querySelector('.hero h1');
+        const originalText = titleElement.textContent;
+        titleElement.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < originalText.length) {
+                titleElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
