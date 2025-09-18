@@ -1,0 +1,38 @@
+body{
+.itens{
+    border: solid black;
+}
+
+.itens th{
+    background-color: red;
+    color: black;
+}
+
+.cadastro{
+    border: solid black;
+}
+.cadastro th{
+    background-color: grey;
+    color: black;
+}
+.agenda{
+    border: solid black;
+}
+.agenda td{
+    color: blue;
+}
+
+.Catalogo{
+    border: solid rgb(204, 0, 0);
+}
+.Catalogo td{
+    font-family: Arial;
+}
+
+.Notas{
+    border: solid blue;
+}
+.Notas th{
+    font-size: large;
+}
+}
