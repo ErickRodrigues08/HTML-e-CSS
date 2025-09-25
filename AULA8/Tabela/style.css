@@ -35,4 +35,139 @@ body{
 .Notas th{
     font-size: large;
 }
+
+.Cardapio{
+    border: solid black;
+}
+.Cardapio td{
+    background-color:  rgb(219, 219, 219);
+}
+
+.Aulas{
+    border: solid black;
+}
+.Aulas td{
+    text-align: center;
+}
+
+.Times{
+    border:  4px solid black;
+   
+}
+.Times td{
+    text-align: center;
+}
+
+.produto th{
+    color: red;
+}
+.produto{
+    border: solid black;
+}
+
+.Filmes{
+    padding: 14px;
+    border: solid black;
+}
+.Filmes td{
+text-align: center;
+}
+
+.Fruta{
+    border: solid black;
+}
+.Fruta td{
+    font-style: italic;
+}
+
+.tabela12{
+    border: solid black;
+}
+.tabela12 td{
+    border:  1px solid black
+}
+
+.tabela13{
+    border: solid black;
+}
+
+.arte{
+    background-color: rgba(255, 0, 0, 0.474);
+}
+
+.tabela14{
+    border: solid black;
+}
+
+.tabela14  td {
+    color: green;
+}
+
+
+.tabela15{
+    border: solid black;
+}
+
+.tabela15 td{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+}
+
+.tabela16{
+    border: solid black;
+}
+
+.Town{
+    background-color: rgb(171, 171, 171);
+}
+
+.tabela17{
+    border: solid black;
+}
+.Aluno{
+    background-color: black;
+    color: white;
+}
+
+.tabela18{
+    border: solid black;
+    border-collapse: collapse;
+    
+}
+.tabela18 th{
+    border-collapse: collapse;
+    border:  2px solid black ;
+}
+
+.tabela18 td{
+    border-collapse: collapse; 
+    border: 2px solid black;
+}
+
+.tabela19{
+    border: solid black;
+}
+
+.livro{
+    font-family: cursive;
+}
+
+.tabela20{
+ border-radius: 20px
+    border-collapse collapse;
+    border: solid black;
+}
+
+.tabela20 td{
+    border-radius: 7px;
+    padding: 5px;
+    border: solid rgb(108, 108, 108);
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.241);
+    text-align: center;
+}
+
+.jogador{
+    color: red;
+    background-color: rgb(255, 255, 255);
 }
