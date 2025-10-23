@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 body{ 
 
@@ -6,4 +7,14 @@ border: 5px solid black;
 border-radius: 10px;
 }
 
+=======
+
+body{ 
+
+#diamant{
+border: 5px solid black;
+border-radius: 10px;
+}
+
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f
 }

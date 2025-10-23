@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .faq{
     background-color: rgba(185, 185, 185, 0.816);
     text-align: center;
@@ -25,4 +26,33 @@
   border-radius: 10px;
   cursor: pointer;
   border-left: 4px solid transparent;
+=======
+.faq{
+    background-color: rgba(185, 185, 185, 0.816);
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 100px;
+}
+
+.faq h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #ce0101;
+}
+
+.faq summary{
+    list-style: none;
+    font-weight: 600;
+}
+
+.faq details {
+  background-color: #adadad;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f
 }

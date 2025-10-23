@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 aside{
  float: right;
@@ -8,4 +9,16 @@ border-radius: 8px;
 border: 1px solid rgba(0, 0, 0, 0.06);
 margin-left: 1rem;
 }
+=======
+body{
+aside{
+ float: right;
+width: 30%;
+background: #e8f6f1;
+padding: 1rem;
+border-radius: 8px;
+border: 1px solid rgba(0, 0, 0, 0.06);
+margin-left: 1rem;
+}
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f
 }

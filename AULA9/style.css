@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 .escola{
      border-collapse: collapse;
@@ -36,4 +37,44 @@ body{
 
 
 
+=======
+body{
+.escola{
+     border-collapse: collapse;
+     border: 2px solid black ;
+}
+.escola th, td{
+     border-collapse: collapse;
+     border: 2px solid black ;
+}
+.escola th{
+    background-color: rgb(209, 209, 209);
+   
+}
+.escola td{
+    padding: 5px;
+    text-align: center;
+}
+
+.futebol{
+    border-collapse: collapse;
+    border: solid black 2px;
+    
+}
+.futebol th{
+    border-collapse: collapse;
+    border: solid black 2px;
+   
+}
+
+.catalogo{
+    border: solid black 4px;
+    border-collapse: collapse;
+}
+
+
+
+
+
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f
 }

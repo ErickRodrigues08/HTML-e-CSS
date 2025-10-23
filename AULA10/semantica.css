@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 header{
     background-color: rgb(168, 168, 168);
@@ -39,3 +40,46 @@ footer{
     margin: auto;
 }
 }
+=======
+body{
+header{
+    background-color: rgb(168, 168, 168);
+    text-align: center;
+}
+
+nav{
+    text-align: center;
+    background-color: rgb(132, 132, 132);
+    width: 300px;
+    margin: auto;
+    border-radius: 10px;
+   
+}
+
+section{
+    background-color: rgb(160, 160, 160);
+    width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0px auto;
+
+    
+}
+
+section{
+  width: 500px;
+    background-color: rgb(163, 163, 163);
+    border-radius: 10px;
+    text-align: center;
+   margin: 0px auto;
+   
+}
+
+footer{
+   height: 70px;
+    text-align: center;
+    background-color: rgb(119, 119, 119);
+    margin: auto;
+}
+}
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f

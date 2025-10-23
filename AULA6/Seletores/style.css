@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 p{
     color: blue;
 }
@@ -104,4 +105,112 @@ div h3{
 
 h1, p, a {
     color: blue;
+=======
+p{
+    color: blue;
+}
+
+#Títuloprincipal{
+    background-color: yellow;
+}
+
+.subtítulo{
+    color: green;
+}
+
+li{
+    color: red;
+}
+
+#div1{
+    background-color: rgb(255, 42, 42);
+}
+
+#div2{
+    background-color: rgb(119, 119, 119);
+}
+
+p,h2,h3{
+    color: rgb(0, 0, 0);
+}
+
+#Link1{
+    color: rgb(0, 0, 0);
+}
+
+#Link2{
+    color: red;
+}
+
+.negrito{
+    font-weight: bold;
+    
+}
+
+img{
+    border: 2px solid black;
+}
+
+div p{
+    color: rgb(0, 8, 255);
+}
+
+.parágrafo1{
+    color: brown;
+}
+
+.parágrafo2{
+    color: black;
+}
+
+.paragrafonegrito{
+    font-weight: bold;
+    color: black;
+}
+
+.paragrafoitalico{
+    font-style: italic;
+    color: black;
+}
+
+.paragrafosublinhado{
+    text-decoration: underline;
+    color: black;
+}
+
+div h3{
+    font-family:'sans-serif';
+    color: black;
+    font-weight: bold;
+}
+
+#div_vermelho{
+    background-color: red;
+}
+
+#div_verde{
+    background-color: green;
+}
+
+#div_azul{
+    background-color: blue;
+}
+
+.destaque{
+    color: rgb(255, 0, 0);
+}
+
+#div_borda{
+    background-color: rgba(255, 0, 0, 0.615);
+    border: 3px solid black;
+}
+
+.link{
+    text-decoration: underline;
+    color: black;
+}
+
+h1, p, a {
+    color: blue;
+>>>>>>> b3d35a39fd846368059f529a3778c5f73e02cd8f
 }
