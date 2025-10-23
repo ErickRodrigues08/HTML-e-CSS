@@ -1,0 +1,294 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #000000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header e Navegação */
+header {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-brand h2 {
+    color: #2c3e50;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #ff0000;
+}
+
+.imagem{
+    margin: 20px;
+    width: 300px;
+   height: 300px;
+    border: solid 3px black;
+    border-radius: 50%;
+    object-fit: cover;
+   object-position: center 10%;
+  
+   
+  
+}
+
+/* Seção Hero */
+.hero {
+    background: linear-gradient(135deg, #000000 20%, #9e0000 100%);
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #000000;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #ff0000;
+}
+
+/* Seção Sobre */
+.about {
+    padding: 100px 0;
+    background: #ffffffbd;
+}
+
+.about h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #e62525f6;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: rgb(0, 0, 0);
+}
+
+.skills h3 {
+    margin-bottom: 1rem;
+    color: #414040;
+    margin: 10px;
+    padding: 10px;
+    background-color: #00000047;
+    margin-right: 350px;
+    border-radius: 15px;
+    
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill {
+    background: #ff0000;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Seção Projetos */
+.projects {
+    padding: 100px 0;
+}
+
+.projects h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #8b0000;
+    font-weight: bold;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    height: 200px;
+    width: 300px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    
+}
+
+.dev-imagem{
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    border: solid 3px rgba(0, 0, 0, 0.112);
+    
+
+}
+.fiddle-imagem{
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    border: solid 3px rgba(0, 0, 0, 0.112);
+    
+
+}
+
+.figma-imagem{
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    border: solid 3px rgba(0, 0, 0, 0.112);
+    
+
+}
+
+.project-card h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/* Seção Contato */
+.contact {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #c10000;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+
